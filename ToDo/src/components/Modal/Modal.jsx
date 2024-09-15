@@ -1,10 +1,18 @@
+import { useState } from "react";
 import { Button } from "../Button/Button";
 import style from "./Modal.module.scss";
 
-export const Modal = ({isOpen}) => {
+export const Modal = ({isOpen, dispatch}) => {
+
+    const [taskName, setTaskName] = useState("");
 
     const handleModal = () => {
         isOpen(prev => !prev);
+    }
+
+    const handleCreateTask = () => {
+        dispatch({type: "CREATE", taskName: taskName});
+        handleModal();
     }
 
     return (
@@ -14,8 +22,8 @@ export const Modal = ({isOpen}) => {
                 <h2>Create new task</h2>
                 <Button action={handleModal} text="X" type="close-btn"/>
                 <label htmlFor="taskName">Task Name:</label>
-                <input type="text" placeholder="Get new Tattoo" name="taskName"/>
-                <Button text="Create Task" type="big-btn"/>
+                <input onChange={(e) => setTaskName(e.target.value)} type="text" placeholder="Get new Tattoo" name="taskName"/>
+                <Button action={handleCreateTask} text="Create Task" type="big-btn"/>
             </div>
         </>
     )
