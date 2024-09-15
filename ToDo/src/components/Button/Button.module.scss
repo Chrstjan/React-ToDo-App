@@ -1,0 +1,36 @@
+.buttonStyling {
+    display: block;
+    border: 0;
+    color: #eee;
+
+    &:hover {
+        scale: 1.05;
+        cursor: pointer;
+    }
+
+    &.small-btn {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #1c1c1c;
+        font-size: 18px;
+    
+    }
+
+    &.close-btn {
+        @extend .small-btn;
+        width: 25px;
+        height: 25px;
+        background: darkred;
+        position: absolute;
+        top: 2%;
+        right: 2%;
+    }
+
+    &.big-btn {
+        width: 150px;
+        height: 30px;
+        border-radius: 6px;
+        background: darkgreen;
+    }
+}
